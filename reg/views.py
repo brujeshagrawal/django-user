@@ -75,11 +75,14 @@ def user_profile_edit(request):
         if form.is_valid():
             user = form.save()
             return redirect('reg:user_profile')
-        else:
-            print(form.errors)
+        # else:
+            # print(form.errors)
+            # errors = json.loads(form.errors.as_json())
+            # for field, error in errors.items():
+
     else:
         form = ProfileEditForm(instance=user)
-        return render(request, 'reg/user_profile_edit.html', {'form':form})
+    return render(request, 'reg/user_profile_edit.html', {'form':form})
 
 @login_required
 def user_profile_pic_update(request):

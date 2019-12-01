@@ -24,19 +24,20 @@
                     {% endif %}
                     <table align='center'>
                         {% for field in form %}
-                            {% if field.errors %}
-                                <tr>
-                                    <td>{{ field.errors }}</td>
-                                </tr>
-                            {% endif %}
                             <tr>
-                                <td>{{ field.label_tag }}</td>
-                                <td>{{ field }}</td>
+                                <td align='right'>{{ field.label_tag }}</td>
+                                <td>&nbsp;&nbsp;{{ field }}</td>
                             </tr>
                             {% if field.help_text %}
                                 <tr>
                                     <td></td>
-                                    <td><small>{{ field.help_text }}</small></td>
+                                    <td>&nbsp;&nbsp;<small>{{ field.help_text }}</small></td>
+                                </tr>
+                            {% endif %}
+                            {% if field.errors %}
+                                <tr>
+                                    <td></td>
+                                    <td style="color:red;"><small>{{ field.errors.as_text }}</small></td>
                                 </tr>
                             {% endif %}
                             <tr>
