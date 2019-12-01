@@ -1,0 +1,113 @@
+{% extends 'reg/base.html' %}
+
+{% block content %}
+<div class="row post-form-full-body">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 post-form">
+        <div align='center'>
+            <br>
+            <div class='profile-pic'>
+                <img src="{{ form.instance.profile_pic.url }}" height=120 width=100>
+            </div>
+            <br>
+            <div>
+                <a href="{% url 'reg:user_profile_edit' %}"><button class='btn btn-default'>Edit Profile</button></a>
+                <a href="{% url 'reg:user_profile_pic_update' %}"><button class='btn btn-default'>Profile Pic</button></a>
+            </div>
+            <hr>
+            <div>
+                {% if form.non_field_errors %}
+                    <div>
+                        <p>{{ form.non_field_errors }}</p>
+                    </div>
+                {% endif %}
+                <table align='center'>
+                    {% if form.first_name.errors %}
+                        <tr>
+                            <td>{{ form.first_name.errors }}</td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td align='right'><label for="{{ form.first_name.id_for_label }}">First Name : </label></td>
+                        <td>&nbsp;</td>
+                        <td>{{ form.first_name.value }}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    {% if form.last_name.errors %}
+                        <tr>
+                            <td>{{ form.last_name.errors }}</td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td align='right'><label for="{{ form.last_name.id_for_label }}">Last Name : </label></td>
+                        <td>&nbsp;</td>
+                        <td>{{ form.last_name.value }}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    {% if form.mobile_number.errors %}
+                        <tr>
+                            <td>{{ form.mobile_number.errors }}</td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td align='right'><label for="{{ form.mobile_number.id_for_label }}">Mobile Number : </label></td>
+                        <td>&nbsp;</td>
+                        <td>{{ form.mobile_number.value }}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    {% if form.email.errors %}
+                        <tr>
+                            <td>{{ form.email.errors }}</td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td align='right'><label for="{{ form.email.id_for_label }}">Email : </label></td>
+                        <td>&nbsp;</td>
+                        <td>{{ form.email.value }}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    {% if form.gender.errors %}
+                        <tr>
+                            <td>{{ form.gender.errors }}</td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td align='right'><label for="{{ form.gender.id_for_label }}">Gender : </label></td>
+                        <td>&nbsp;</td>
+                        {% if form.gender.value == "M" %}
+                            <td>Male</td>
+                        {% elif form.gender.value == "F" %}
+                            <td>Female</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    {% if form.dob.errors %}
+                        <tr>
+                            <td>{{ form.dob.errors }}</td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td align='right'><label for="{{ form.dob.id_for_label }}">Date of Birth : </label></td>
+                        <td>&nbsp;</td>
+                        <td>{{ form.dob.value }}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+{% endblock %}

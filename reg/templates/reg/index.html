@@ -1,0 +1,16 @@
+{% extends 'reg/base.html' %}
+
+{% block content %}
+    <div class='home-body' align='center'>
+        <h1>Welcome to my Blogging World!!</h1>
+        <br><br>
+        {% if not user.is_authenticated %}
+            <a href="{% url 'reg:user_signup' %}">SignUp</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="{% url 'login' %}">Login</a>
+        {% else %}
+            <a href="{% url 'reg:user_profile' %}"><button class='btn btn-default'>View Profile</button></a>
+        {% endif %}
+    </div>  
+
+{% endblock %}

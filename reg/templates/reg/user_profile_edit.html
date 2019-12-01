@@ -1,0 +1,57 @@
+{% extends 'reg/base.html' %}
+
+{% block content %}
+<div class="row post-form-full-body">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 post-form">
+        <div align='center'>
+            <br>
+            <div class='profile-pic'>
+                <img src="{{ form.instance.profile_pic.url }}" height=120 width=100>
+            </div>
+            <br>
+            <div>
+                <a href="{% url 'reg:user_profile_pic_update' %}"><button class='btn btn-default'>Profile Pic</button></a>
+            </div>
+            <hr>
+            <div>
+                <form action="{% url 'reg:user_profile_edit' %}" method='POST'>
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div>
+                            <p>{{ form.non_field_errors }}</p>
+                        </div>
+                    {% endif %}
+                    <table align='center'>
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <tr>
+                                    <td>{{ field.errors }}</td>
+                                </tr>
+                            {% endif %}
+                            <tr>
+                                <td>{{ field.label_tag }}</td>
+                                <td>{{ field }}</td>
+                            </tr>
+                            {% if field.help_text %}
+                                <tr>
+                                    <td></td>
+                                    <td><small>{{ field.help_text }}</small></td>
+                                </tr>
+                            {% endif %}
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td><button class='btn btn-default' type='submit'>Save</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+{% endblock %}

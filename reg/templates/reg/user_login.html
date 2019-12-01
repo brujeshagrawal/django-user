@@ -1,0 +1,33 @@
+{% extends "reg/base.html" %}
+
+{% block content %}
+<div class="row post-form-full-body">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 post-form">
+            <br>
+            {% if form.errors %}
+                <p style="color:red;"><small>Your username and password didn't match. Please try again.</small></p>
+            {% endif %}  
+            
+            <form action="{% url 'login' %}" method='POST'>
+                {% csrf_token %}
+                <table align='center'>
+                    {% for field in form %}
+                        <tr>
+                            <td align='right'>{{ field.label_tag }}</td>
+                            <td>&nbsp;{{ field }}</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td><input type="hidden" name="next" value="{{ next }}" /></td>
+                        <td><button class='btn btn-default' type='submit'>Login</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+{% endblock %}
