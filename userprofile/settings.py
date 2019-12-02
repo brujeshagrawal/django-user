@@ -127,10 +127,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media' )
 
 
 AUTH_USER_MODEL = 'reg.User'
-# LOGIN_URL = 'login/'
-# LOGIN_REDIRECT_URL = 'profile/<int:pk>'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
